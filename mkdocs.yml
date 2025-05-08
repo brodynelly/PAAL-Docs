@@ -10,9 +10,6 @@ nav:
       - Key Components and Structure: frontend/key-components.md
       - API Interactions: frontend/api-interactions.md
       - State Management: frontend/state-management.md
-      - UI/UX Design System: frontend/ui-ux-design-system.md
-      - Testing Strategy: frontend/testing-strategy.md
-      - Deployment Process: frontend/deployment-process.md
   - Backend:
       - Overall Architecture: backend/overall-architecture.md
       - Service Decomposition: backend/service-decomposition.md

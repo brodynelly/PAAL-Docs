@@ -2,7 +2,7 @@
 
 ## Overview
 
-The PAAL frontend uses a combination of state management approaches to handle different types of state. This document outlines the state management strategies employed throughout the application.
+The PAAL frontend uses a combination of state management approaches to handle different types of state. This document outlines those said states: 
 
 ## State Categories
 

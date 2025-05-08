@@ -367,7 +367,9 @@ export default api;
 
 ## Real-time Data with Socket.IO
 
-The application uses Socket.IO for real-time updates, configured in `src/lib/socket.ts`:
+The frontend server for the application uses Socket.IO for real-time updates, configured in `src/lib/socket.ts`:
+
+**Note**: the socket.io implementation is really only a concept. (No implmentation for serialized data) Further development for live-time updates will need to be implemented. 
 
 ```typescript
 import { io } from 'socket.io-client'

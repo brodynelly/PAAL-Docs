@@ -25,11 +25,6 @@ The PAAL system frontend is built as a **monolithic single-page application (SPA
 - **Shadcn/UI**: Collection of reusable UI components built with Radix UI and Tailwind CSS
 - **Lucide Icons**: Icon library used throughout the application
 
-### Build and Development Tools
-
-- **pnpm**: Package manager for managing dependencies
-- **ESLint**: Static code analysis tool for identifying problematic patterns
-- **Prettier**: Code formatter for consistent code style
 
 ## Application Structure
 
@@ -78,20 +73,3 @@ The application uses a hybrid rendering approach:
 - Image optimization using Next.js Image component
 - Lazy loading of components and routes
 - Memoization of expensive calculations and renders
-
-## Browser Compatibility
-
-The application is designed to work on modern browsers including:
-- Chrome (latest 2 versions)
-- Firefox (latest 2 versions)
-- Safari (latest 2 versions)
-- Edge (latest 2 versions)
-
-## Accessibility
-
-The application aims to meet WCAG 2.1 AA standards with:
-- Semantic HTML
-- Keyboard navigation support
-- Screen reader compatibility
-- Sufficient color contrast
-- Focus management
