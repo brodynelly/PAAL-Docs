@@ -1,0 +1,13 @@
+site_name: PAAL Documentation
+
+site_name: My Project Documentation
+site_url: https://brodynelly.github.io/PAAL-Docs/
+nav:
+  - Home: index.md
+  - Guide:
+      - Getting Started: guide/getting-started.md
+      - Usage: guide/usage.md
+theme:
+  name: material
+plugins:
+  - search
