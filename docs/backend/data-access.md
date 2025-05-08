@@ -2,11 +2,11 @@
 
 ## Overview
 
-The data access layer in the PAAL system is responsible for interacting with the MongoDB database. It provides an abstraction over the database operations, allowing the business logic layer to work with data without being concerned with the specifics of the database implementation. This document outlines the data access patterns, models, and techniques used in the system.
+The data access layer is responsible for interacting with the MongoDB database. This document outlines the data access patterns, models, and techniques used in the system.
 
 ## MongoDB and Mongoose
 
-The PAAL system uses MongoDB as its primary database and Mongoose as the Object Data Modeling (ODM) library. Mongoose provides a schema-based solution to model application data and includes built-in type casting, validation, query building, and business logic hooks.
+The PAAL system uses MongoDB as its primary database and Mongoose as the Object Data Modeling (ODM) library. Mongoose provides a schema-based solution to model application data and includes built-in type casting, validation, query building, and logic hooks.
 
 ### Database Connection
 
@@ -314,47 +314,6 @@ PigPostureSchema.index({ timestamp: -1 });
 PigPostureSchema.index({ pigId: 1, timestamp: -1 });
 
 module.exports = mongoose.model('PigPosture', PigPostureSchema);
-```
-
-#### Temperature Data Model
-
-```javascript
-// models/TemperatureData.js
-const mongoose = require('mongoose');
-const { Schema } = mongoose;
-
-const TemperatureDataSchema = new Schema({
-  deviceId: { 
-    type: String, 
-    required: true,
-    index: true
-  },
-  timestamp: { 
-    type: Date, 
-    default: Date.now,
-    index: true
-  },
-  temperature: { 
-    type: Number, 
-    required: true 
-  },
-  humidity: { 
-    type: Number 
-  },
-  location: {
-    farmId: { type: Schema.Types.ObjectId, ref: 'Farm' },
-    barnId: { type: Schema.Types.ObjectId, ref: 'Barn' },
-    stallId: { type: Schema.Types.ObjectId, ref: 'Stall' }
-  }
-});
-
-// Compound index for efficient queries
-TemperatureDataSchema.index({ deviceId: 1, timestamp: -1 });
-TemperatureDataSchema.index({ 'location.farmId': 1 });
-TemperatureDataSchema.index({ 'location.barnId': 1 });
-TemperatureDataSchema.index({ 'location.stallId': 1 });
-
-module.exports = mongoose.model('TemperatureData', TemperatureDataSchema);
 ```
 
 ## Data Access Patterns
@@ -730,33 +689,3 @@ try {
 }
 ```
 
-## Data Migration
-
-The system includes scripts for data migration:
-
-```javascript
-// Example: Data migration script
-const migrateData = async () => {
-  try {
-    // Get all pigs
-    const pigs = await Pig.find({});
-    
-    // Update each pig
-    for (const pig of pigs) {
-      // Add new field with default value
-      pig.active = true;
-      
-      // Save the updated pig
-      await pig.save();
-    }
-    
-    console.log(`Migrated ${pigs.length} pigs successfully`);
-  } catch (error) {
-    console.error('Error migrating data:', error);
-  }
-};
-```
-
-## Conclusion
-
-The data access layer of the PAAL system provides a robust and efficient interface to the MongoDB database. It uses Mongoose for schema definition, validation, and query building, and implements various data access patterns to meet the system's requirements. The layer is designed to be maintainable, performant, and secure, with features like indexing, transactions, and change streams to support the system's functionality.

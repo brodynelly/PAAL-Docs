@@ -2,51 +2,22 @@
 
 ## Overview
 
-The PAAL system implements comprehensive security measures to protect sensitive data and ensure secure access to the application. This document outlines the security architecture, authentication mechanisms, authorization rules, and other security practices implemented in the system.
+This document outlines the security architecture, authentication mechanisms, authorization rules, and other security practices implemented in the system.
 
 ## Security Architecture
 
 The PAAL system follows a defense-in-depth approach with multiple layers of security:
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                     Application Layer                       │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐  │
-│  │ Input       │  │ Business    │  │ Output              │  │
-│  │ Validation  │  │ Logic       │  │ Encoding            │  │
-│  └─────────────┘  └─────────────┘  └─────────────────────┘  │
-├─────────────────────────────────────────────────────────────┤
-│                     Access Control Layer                    │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐  │
-│  │ Authenti-   │  │ Authori-    │  │ Session             │  │
-│  │ cation      │  │ zation      │  │ Management          │  │
-│  └─────────────┘  └─────────────┘  └─────────────────────┘  │
-├─────────────────────────────────────────────────────────────┤
-│                     Transport Layer                         │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐  │
-│  │ HTTPS/TLS   │  │ API         │  │ Network             │  │
-│  │ Encryption  │  │ Gateway     │  │ Segmentation        │  │
-│  └─────────────┘  └─────────────┘  └─────────────────────┘  │
-├─────────────────────────────────────────────────────────────┤
-│                     Data Layer                              │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐  │
-│  │ Encryption  │  │ Backup      │  │ Data                │  │
-│  │ at Rest     │  │ Security    │  │ Minimization        │  │
-│  └─────────────┘  └─────────────┘  └─────────────────────┘  │
-└─────────────────────────────────────────────────────────────┘
-```
+  1. **Application Layer**
+      - *input validation, Business Logic, Output Encoding*
+  2. **Access Control Layer**
+      - *Authenciation, Authorization, Session Management*
+  3. **Transport Layer**
+      - *HTTPS/TLS Encryption, API Gateway, Network Segmentation*
+  4. **Data Layer**
+      - *Encryption at REST, Backup Security, Data Minimization*
 
-### Security Principles
 
-The system is built on the following security principles:
-
-1. **Defense in Depth**: Multiple layers of security controls
-2. **Principle of Least Privilege**: Users and processes have only the permissions they need
-3. **Secure by Default**: Security is built into the system from the beginning
-4. **Fail Securely**: Default to secure state on failure
-5. **Complete Mediation**: Every access to resources is checked for authorization
-6. **Separation of Duties**: Critical actions require multiple approvals
-7. **Keep Security Simple**: Simple security mechanisms are easier to verify
 
 ## Authentication Implementation
 
@@ -577,31 +548,10 @@ ENCRYPTION_KEY=32-char-hex-encryption-key
 
 # Security Headers
 ENABLE_CSP=true
-CSP_REPORT_URI=https://example.com/csp-report
+CSP_REPORT_URI= ---
 
 # Rate Limiting
 RATE_LIMIT_WINDOW_MS=900000
 RATE_LIMIT_MAX_REQUESTS=100
 
-# CORS Configuration
-CORS_ORIGIN=https://example.com
 ```
-
-## Security Best Practices
-
-1. **Principle of Least Privilege**: Users and processes have only the permissions they need
-2. **Defense in Depth**: Multiple layers of security controls
-3. **Fail Securely**: Default to secure state on failure
-4. **Complete Mediation**: Every access to resources is checked for authorization
-5. **Separation of Duties**: Critical actions require multiple approvals
-6. **Keep Security Simple**: Simple security mechanisms are easier to verify
-7. **Security by Design**: Security built into the system from the beginning
-
-## Security Testing
-
-The system undergoes regular security testing:
-
-1. **Automated Security Scanning**: Regular automated security scans
-2. **Penetration Testing**: Periodic penetration testing by security professionals
-3. **Dependency Scanning**: Regular scanning of dependencies for vulnerabilities
-4. **Code Reviews**: Security-focused code reviews for all changes

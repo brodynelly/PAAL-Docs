@@ -2,7 +2,7 @@
 
 ## Overview
 
-The PAAL system provides a comprehensive RESTful API that allows clients to interact with the system's resources. This document details the API design principles, authentication mechanisms, endpoint specifications, and implementation details to serve as a complete reference for developers working with the API.
+The backend utilizes RESTful API that allows clients to interact with the system's resources. This document details the API design principles, authentication mechanisms, endpoint specifications, and implementation details to serve as a complete reference for developers working with the API.
 
 ## API Design Principles
 

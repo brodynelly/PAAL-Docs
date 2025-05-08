@@ -2,7 +2,7 @@
 
 ## Architecture Type
 
-The PAAL system backend is built as a **monolithic application** using Node.js and Express.js. This architecture was chosen for its simplicity, ease of development, and suitability for the current scale of the application. The monolithic approach allows for straightforward deployment and maintenance while still providing a clear separation of concerns through modular organization.
+The Backend is built using Node.js and Express.js. This architecture was chosen for its simplicity, ease of development, and suitability for the current scale of the application. This Approach allows for a straightforward deployment and maintenance while still providing modular organization.
 
 ## Core Technologies
 
@@ -26,7 +26,7 @@ The PAAL system backend is built as a **monolithic application** using Node.js a
 
 ### Development Tools
 
-- **pnpm**: Package manager for managing dependencies
+- **npm**: Package manager for managing dependencies
 - **nodemon**: Development tool for automatic server restarts
 - **ESLint**: Static code analysis tool for identifying problematic patterns
 
@@ -77,15 +77,16 @@ server/
 
 ## Request Flow
 
-The typical flow of a request through the backend system is as follows:
+The flow of a request through the backend system is as follows:
 
 1. **HTTP Request**: Client sends an HTTP request to the server
 2. **NGINX Proxy**: Request is received by NGINX and forwarded to the Node.js application
 3. **Express Middleware**: Request passes through middleware for:
-   - CORS handling
-   - Body parsing
-   - Authentication (if required)
-   - Request logging
+    - CORS handling 
+        - **(DEVMODE: PLEASE UPDATE CORS TO RESTRICT ACCESS ON DEPLOYMENT)**
+    - Body parsing
+    - Authentication (if required)
+    - Request logging
 4. **Route Handler**: Request is routed to the appropriate handler based on the URL path
 5. **Business Logic**: Route handler executes business logic, often interacting with the database
 6. **Database Interaction**: Mongoose models are used to query or update the MongoDB database
@@ -258,25 +259,6 @@ module.exports = {
   CORS_CONFIG,
 };
 ```
-
-## Performance Considerations
-
-Several strategies are employed to ensure good performance:
-
-1. **Database Indexing**: Key fields are indexed for faster queries
-2. **Query Optimization**: Queries are optimized to fetch only required data
-3. **Pagination**: Large result sets are paginated to limit data transfer
-4. **Caching**: Frequently accessed data is cached where appropriate
-5. **Rate Limiting**: API endpoints are protected from abuse with rate limiting
-
-## Scalability Approach
-
-While currently implemented as a monolith, the application is designed with future scalability in mind:
-
-1. **Modular Design**: Clear separation of concerns allows for future microservice extraction
-2. **Stateless Design**: The application maintains minimal state, allowing for horizontal scaling
-3. **Database Scaling**: MongoDB can be scaled through sharding and replication
-4. **Containerization**: Docker containerization enables easy deployment and scaling
 
 ## Security Measures
 

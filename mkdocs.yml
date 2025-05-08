@@ -12,32 +12,28 @@ nav:
       - State Management: frontend/state-management.md
   - Backend:
       - Overall Architecture: backend/overall-architecture.md
-      - Service Decomposition: backend/service-decomposition.md
-      - API Design and Documentation: backend/api-design.md
-      - Business Logic Layer: backend/business-logic.md
+      - Services Overview: backend/service-decomposition.md
+      - API Design: backend/api-design.md
       - Data Access Layer: backend/data-access.md
-      - Caching Strategy: backend/caching-strategy.md
       - Security Measures: backend/security-measures.md
-      - Logging and Monitoring: backend/logging-monitoring.md
-      - Deployment Process: backend/deployment-process.md
-  - Architecture:
-      - High-Level System Architecture: architecture/high-level-system.md
-      - Scalability and Reliability: architecture/scalability-reliability.md
-      - Message Queuing and Asynchronous Processing: architecture/message-queuing.md
-      - Data Storage Architecture: architecture/data-storage.md
-      - Network Architecture: architecture/network-architecture.md
-      - Security Architecture: architecture/security-architecture.md
-  - Database:
-      - Database Schema: database/database-schema.md
-      - Data Models: database/data-models.md
-      - Query Optimization: database/query-optimization.md
-      - Data Replication and Backup: database/replication-backup.md
-      - Database Technology Choices: database/technology-choices.md
-  - Internal Structure and Organization:
-      - Code Structure and Conventions: internal/code-structure.md
-      - Configuration Management: internal/configuration-management.md
-      - Dependency Management: internal/dependency-management.md
-      - Build and Deployment Pipelines: internal/build-deployment.md
+  # - Architecture:
+  #     - High-Level System Architecture: architecture/high-level-system.md
+  #     - Scalability and Reliability: architecture/scalability-reliability.md
+  #     - Message Queuing and Asynchronous Processing: architecture/message-queuing.md
+  #     - Data Storage Architecture: architecture/data-storage.md
+  #     - Network Architecture: architecture/network-architecture.md
+  #     - Security Architecture: architecture/security-architecture.md
+  # - Database:
+  #     - Database Schema: database/database-schema.md
+  #     - Data Models: database/data-models.md
+  #     - Query Optimization: database/query-optimization.md
+  #     - Data Replication and Backup: database/replication-backup.md
+  #     - Database Technology Choices: database/technology-choices.md
+  # - Internal Structure and Organization:
+  #     - Code Structure and Conventions: internal/code-structure.md
+  #     - Configuration Management: internal/configuration-management.md
+  #     - Dependency Management: internal/dependency-management.md
+  #     - Build and Deployment Pipelines: internal/build-deployment.md
 theme:
   name: material
 

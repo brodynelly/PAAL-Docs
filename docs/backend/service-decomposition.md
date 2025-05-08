@@ -2,11 +2,11 @@
 
 ## Overview
 
-While the PAAL system backend is currently implemented as a monolithic application, it is organized in a modular way that follows service-oriented principles. This document outlines the logical services within the application, their responsibilities, and how they interact with each other.
+The Backend System is currently organized in a modular way that follows service-oriented principles. This document outlines the routes and endpoints for the application, their responsibilities, and how they interact with each other.
 
-## Core Services
+## System Orginization
 
-The backend is decomposed into the following logical services:
+Here is the outline of the services operated within the backend for the system
 
 1. **Authentication Service**
 2. **User Management Service**
@@ -17,7 +17,7 @@ The backend is decomposed into the following logical services:
 7. **Notification Service**
 8. **Activity Logging Service**
 
-## Authentication Service
+## Authentication
 
 ### Responsibilities
 
@@ -40,7 +40,7 @@ The backend is decomposed into the following logical services:
 | `/api/auth/token` | GET | Verify token and return user info |
 | `/api/auth/register` | POST | Register a new user (admin only) |
 
-### Interaction with Other Services
+### Communication between services
 
 - **User Management Service**: Shares the User model for user information
 - **Activity Logging Service**: Logs authentication events
@@ -407,77 +407,6 @@ router.post('/', async (req, res) => {
 });
 ```
 
-## Data Collection Service
-
-### Responsibilities
-
-- Collecting and storing sensor data
-- Processing raw data into usable formats
-- Managing data upload endpoints
-
-### Key Components
-
-- **Routes**: `/api/upload/*`, `/api/temperature/*`
-- **Models**: `PostureData`, `TemperatureData`, `Device`
-
-### API Endpoints
-
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/upload/postureupload` | POST | Upload posture data |
-| `/api/temperature` | GET | Get temperature data |
-| `/api/temperature/device/:deviceId` | GET | Get temperature data by device |
-
-### Interaction with Other Services
-
-- **Pig Management Service**: Links data to specific pigs
-- **Farm Management Service**: Links data to specific locations
-- **Analytics Service**: Provides data for analysis
-
-### Code Example
-
-```javascript
-// routes/upload/postureUpload.js (excerpt)
-router.post('/', async (req, res) => {
-  try {
-    const { pigId, timestamp, score } = req.body;
-    
-    // Validate required fields
-    if (!pigId || !score) {
-      return res.status(400).json({ error: 'PigId and score are required' });
-    }
-    
-    // Validate score range
-    if (score < 0 || score > 5) {
-      return res.status(400).json({ error: 'Score must be between 0 and 5' });
-    }
-    
-    // Check if pig exists
-    const pig = await Pig.findOne({ pigId });
-    if (!pig) {
-      return res.status(404).json({ error: 'Pig not found' });
-    }
-    
-    // Create posture data record
-    const postureData = new PostureData({
-      pigId,
-      timestamp: timestamp || new Date(),
-      score
-    });
-    
-    await postureData.save();
-    
-    res.status(201).json({
-      success: true,
-      data: postureData
-    });
-  } catch (error) {
-    console.error('Error uploading posture data:', error);
-    res.status(500).json({ error: 'Failed to upload posture data' });
-  }
-});
-```
-
 ## Analytics Service
 
 ### Responsibilities
@@ -572,64 +501,6 @@ router.get('/', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch stats' });
   }
 });
-```
-
-## Notification Service
-
-### Responsibilities
-
-- Real-time notifications via Socket.IO
-- Alert generation for critical events
-- Notification delivery management
-
-### Key Components
-
-- **Socket**: `socket/events.js`, `socket/index.js`
-
-### Socket Events
-
-| Event | Description |
-|-------|-------------|
-| `stats_update` | Updated system statistics |
-| `pigs_update` | Updates to pig data |
-| `devices_update` | Updates to device status |
-| `activity` | New activity log entry |
-
-### Interaction with Other Services
-
-- **Analytics Service**: Receives statistics to broadcast
-- **Activity Logging Service**: Receives activities to broadcast
-- **Data Collection Service**: Receives sensor data updates to broadcast
-
-### Code Example
-
-```javascript
-// socket/events.js (excerpt)
-const setupSocketEvents = (io) => {
-  io.on('connection', (socket) => {
-    console.log(`Client connected: ${socket.id}`);
-    
-    // Join rooms based on user role
-    socket.on('join', (data) => {
-      if (data.userId) {
-        socket.join(`user:${data.userId}`);
-      }
-      
-      if (data.role === 'admin') {
-        socket.join('admins');
-      }
-      
-      if (data.assignedFarm) {
-        socket.join(`farm:${data.assignedFarm}`);
-      }
-    });
-    
-    // Handle client disconnection
-    socket.on('disconnect', () => {
-      console.log(`Client disconnected: ${socket.id}`);
-    });
-  });
-};
 ```
 
 ## Activity Logging Service
@@ -737,11 +608,11 @@ module.exports = {
 };
 ```
 
-## Service Communication
+## **API ENDPOINT COMUNICATION**
 
 ### Direct Method Calls
 
-Since the application is a monolith, services communicate primarily through direct method calls:
+Services communicate primarily through direct method calls:
 
 ```javascript
 // Example of direct service communication
@@ -781,19 +652,3 @@ const emitUpdatedStats = async () => {
   }
 };
 ```
-
-## Future Service Extraction
-
-The modular design of the application allows for future extraction of services into separate microservices if needed:
-
-1. **API Gateway**: Could be extracted to handle routing and authentication
-2. **User Service**: Could be extracted to handle user management
-3. **Data Collection Service**: Could be extracted to handle high-volume data ingestion
-4. **Analytics Service**: Could be extracted to handle computationally intensive analytics
-
-This extraction would require:
-
-1. Implementing inter-service communication (e.g., REST, gRPC, message queues)
-2. Setting up service discovery and registration
-3. Implementing distributed data management
-4. Enhancing the authentication and authorization mechanisms
