@@ -1,0 +1,1417 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://brodynelly.github.io/PAAL-Docs/internal/code-structure/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Code Structure and Conventions - PAAL Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#code-structure-and-conventions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="PAAL Documentation" class="md-header__button md-logo" aria-label="PAAL Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PAAL Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Code Structure and Conventions
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="PAAL Documentation" class="md-nav__button md-logo" aria-label="PAAL Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    PAAL Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gettingstarted/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Frontend
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Frontend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/overall-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overall Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/key-components/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Key Components and Structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/api-interactions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Interactions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../frontend/state-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    State Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Backend
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Backend
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/overall-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overall Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/service-decomposition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Services Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/api-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Design
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/data-access/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Access Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backend/security-measures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security Measures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repository-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Repository Structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backend-code-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backend Code Structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frontend-code-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frontend Code Structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#naming-conventions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Naming Conventions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Naming Conventions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#files-and-directories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Files and Directories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables-and-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables and Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coding-style-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coding Style Guidelines
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Coding Style Guidelines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#javascripttypescript" class="md-nav__link">
+    <span class="md-ellipsis">
+      JavaScript/TypeScript
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#react" class="md-nav__link">
+    <span class="md-ellipsis">
+      React
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cssstyling" class="md-nav__link">
+    <span class="md-ellipsis">
+      CSS/Styling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backend
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation Guidelines
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Documentation Guidelines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Comments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#readme-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      README Files
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frontend
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backend
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-conventions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing Conventions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing Conventions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-file-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test File Organization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-naming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Naming
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Structure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Git Workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Git Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#branch-naming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Branch Naming
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commit-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commit Messages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pull-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pull Requests
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="code-structure-and-conventions">Code Structure and Conventions<a class="headerlink" href="#code-structure-and-conventions" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>This document outlines the code organization, naming conventions, and coding style guidelines for the PAAL system. Following these conventions ensures consistency across the codebase and makes it easier for developers to understand and maintain the code.</p>
+<h2 id="repository-structure">Repository Structure<a class="headerlink" href="#repository-structure" title="Permanent link">&para;</a></h2>
+<p>The PAAL system is organized as a monorepo with separate directories for the frontend and backend components:</p>
+<div class="codehilite"><pre><span></span><code>paal/
+├── documentation/        # Project documentation
+├── server/               # Backend server code
+└── src/                  # Frontend application code
+</code></pre></div>
+
+<h2 id="backend-code-structure">Backend Code Structure<a class="headerlink" href="#backend-code-structure" title="Permanent link">&para;</a></h2>
+<p>The backend code is organized in a modular structure by feature and responsibility:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">server</span><span class="o">/</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">config</span><span class="o">/</span><span class="w">               </span><span class="c1"># Configuration settings</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">index</span><span class="o">.</span><span class="n">js</span><span class="w">          </span><span class="c1"># Exports configuration objects</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">db</span><span class="o">/</span><span class="w">                   </span><span class="c1"># Database connection and models</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">connection</span><span class="o">.</span><span class="n">js</span><span class="w">     </span><span class="c1"># Manages MongoDB connection</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">models</span><span class="o">.</span><span class="n">js</span><span class="w">         </span><span class="c1"># Registers all Mongoose models</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">middleware</span><span class="o">/</span><span class="w">           </span><span class="c1"># Express middleware</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">authMiddleware</span><span class="o">.</span><span class="n">js</span><span class="w"> </span><span class="c1"># Authentication middleware</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">role</span><span class="o">.</span><span class="n">js</span><span class="w">           </span><span class="c1"># Role-based access control</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">index</span><span class="o">.</span><span class="n">js</span><span class="w">          </span><span class="c1"># Configures middleware</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">models</span><span class="o">/</span><span class="w">               </span><span class="c1"># Mongoose models</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">Pig</span><span class="o">.</span><span class="n">js</span><span class="w">            </span><span class="c1"># Pig data model</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">Farm</span><span class="o">.</span><span class="n">js</span><span class="w">           </span><span class="c1"># Farm data model</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">Barn</span><span class="o">.</span><span class="n">js</span><span class="w">           </span><span class="c1"># Barn data model</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">Stall</span><span class="o">.</span><span class="n">js</span><span class="w">          </span><span class="c1"># Stall data model</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">User</span><span class="o">.</span><span class="n">js</span><span class="w">           </span><span class="c1"># User data model</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">PostureData</span><span class="o">.</span><span class="n">js</span><span class="w">    </span><span class="c1"># Pig posture data model</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="o">...</span><span class="w">               </span><span class="c1"># Other data models</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">routes</span><span class="o">/</span><span class="w">               </span><span class="c1"># API routes</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">pig</span><span class="o">.</span><span class="n">js</span><span class="w">            </span><span class="c1"># Pig-related endpoints</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">farm</span><span class="o">.</span><span class="n">js</span><span class="w">           </span><span class="c1"># Farm-related endpoints</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">auth</span><span class="o">.</span><span class="n">js</span><span class="w">           </span><span class="c1"># Authentication endpoints</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">user</span><span class="o">.</span><span class="n">js</span><span class="w">           </span><span class="c1"># User management endpoints</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="o">...</span><span class="w">               </span><span class="c1"># Other route files</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">scripts</span><span class="o">/</span><span class="w">              </span><span class="c1"># Utility scripts</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="nb">seed</span><span class="o">-</span><span class="n">all</span><span class="o">.</span><span class="n">js</span><span class="w">       </span><span class="c1"># Database seeding script</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="o">...</span><span class="w">               </span><span class="c1"># Other scripts</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">services</span><span class="o">/</span><span class="w">             </span><span class="c1"># Business logic services</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">activityLogger</span><span class="o">.</span><span class="n">js</span><span class="w"> </span><span class="c1"># Activity logging service</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="o">...</span><span class="w">               </span><span class="c1"># Other services</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">socket</span><span class="o">/</span><span class="w">               </span><span class="c1"># Socket.IO related code</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">events</span><span class="o">.</span><span class="n">js</span><span class="w">         </span><span class="c1"># Socket event handlers</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">stats</span><span class="o">.</span><span class="n">js</span><span class="w">          </span><span class="c1"># Statistics emission</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">index</span><span class="o">.</span><span class="n">js</span><span class="w">          </span><span class="c1"># Socket.IO initialization</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">utils</span><span class="o">/</span><span class="w">                </span><span class="c1"># Utility functions</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">routeValidator</span><span class="o">.</span><span class="n">js</span><span class="w"> </span><span class="c1"># Route validation utility</span>
+<span class="err">├──</span><span class="w"> </span><span class="o">.</span><span class="n">env</span><span class="w">                  </span><span class="c1"># Environment variables (not in version control)</span>
+<span class="err">├──</span><span class="w"> </span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">example</span><span class="w">          </span><span class="c1"># Example environment variables</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">index</span><span class="o">.</span><span class="n">js</span><span class="w">              </span><span class="c1"># Legacy entry point</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">server</span><span class="o">.</span><span class="n">js</span><span class="w">             </span><span class="c1"># Main entry point</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">package</span><span class="o">.</span><span class="n">json</span><span class="w">          </span><span class="c1"># Node.js dependencies</span>
+<span class="err">└──</span><span class="w"> </span><span class="n">README</span><span class="o">.</span><span class="n">md</span><span class="w">             </span><span class="c1"># Backend documentation</span>
+</code></pre></div>
+
+<h2 id="frontend-code-structure">Frontend Code Structure<a class="headerlink" href="#frontend-code-structure" title="Permanent link">&para;</a></h2>
+<p>The frontend code follows Next.js's file-based routing structure with additional organization by feature:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">src</span><span class="o">/</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">app</span><span class="o">/</span><span class="w">                  </span><span class="err">#</span><span class="w"> </span><span class="k">Next</span><span class="p">.</span><span class="n">js</span><span class="w"> </span><span class="n">app</span><span class="w"> </span><span class="n">directory</span><span class="w"> </span><span class="p">(</span><span class="n">routes</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">pages</span><span class="p">)</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="p">(</span><span class="n">auth</span><span class="p">)</span><span class="o">/</span><span class="w">           </span><span class="err">#</span><span class="w"> </span><span class="n">Authentication</span><span class="o">-</span><span class="n">related</span><span class="w"> </span><span class="n">routes</span>
+<span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">login</span><span class="o">/</span><span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="n">Login</span><span class="w"> </span><span class="n">page</span>
+<span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="p">...</span><span class="w">           </span><span class="err">#</span><span class="w"> </span><span class="n">Other</span><span class="w"> </span><span class="n">auth</span><span class="w"> </span><span class="n">pages</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">/</span><span class="w">           </span><span class="err">#</span><span class="w"> </span><span class="n">Main</span><span class="w"> </span><span class="n">application</span><span class="w"> </span><span class="n">routes</span>
+<span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">overview</span><span class="o">/</span><span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="n">Dashboard</span><span class="w"> </span><span class="n">overview</span><span class="w"> </span><span class="n">page</span>
+<span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">details</span><span class="o">/</span><span class="w">      </span><span class="err">#</span><span class="w"> </span><span class="n">Detailed</span><span class="w"> </span><span class="k">data</span><span class="w"> </span><span class="n">views</span>
+<span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="k">admin</span><span class="o">/</span><span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="k">Admin</span><span class="w"> </span><span class="n">panel</span><span class="w"> </span><span class="n">pages</span>
+<span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">pigs</span><span class="o">/</span><span class="w">         </span><span class="err">#</span><span class="w"> </span><span class="n">Pig</span><span class="w"> </span><span class="n">management</span><span class="w"> </span><span class="n">pages</span>
+<span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="o">[</span><span class="n">id</span><span class="o">]/</span><span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="k">Dynamic</span><span class="w"> </span><span class="n">route</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">pig</span><span class="w"> </span><span class="n">details</span>
+<span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="p">...</span><span class="w">       </span><span class="err">#</span><span class="w"> </span><span class="n">Other</span><span class="w"> </span><span class="n">pig</span><span class="w"> </span><span class="n">pages</span>
+<span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="p">...</span><span class="w">           </span><span class="err">#</span><span class="w"> </span><span class="n">Other</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="n">pages</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">api</span><span class="o">/</span><span class="w">              </span><span class="err">#</span><span class="w"> </span><span class="n">API</span><span class="w"> </span><span class="n">routes</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">server</span><span class="o">-</span><span class="n">side</span><span class="w"> </span><span class="n">operations</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">layout</span><span class="p">.</span><span class="n">tsx</span><span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="n">Root</span><span class="w"> </span><span class="n">layout</span><span class="w"> </span><span class="n">component</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">components</span><span class="o">/</span><span class="w">           </span><span class="err">#</span><span class="w"> </span><span class="n">Reusable</span><span class="w"> </span><span class="n">UI</span><span class="w"> </span><span class="n">components</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">ui</span><span class="o">/</span><span class="w">               </span><span class="err">#</span><span class="w"> </span><span class="n">Basic</span><span class="w"> </span><span class="n">UI</span><span class="w"> </span><span class="n">components</span>
+<span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">Button</span><span class="p">.</span><span class="n">tsx</span><span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="n">Button</span><span class="w"> </span><span class="n">component</span>
+<span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">Card</span><span class="p">.</span><span class="n">tsx</span><span class="w">      </span><span class="err">#</span><span class="w"> </span><span class="n">Card</span><span class="w"> </span><span class="n">component</span>
+<span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="p">...</span><span class="w">           </span><span class="err">#</span><span class="w"> </span><span class="n">Other</span><span class="w"> </span><span class="n">UI</span><span class="w"> </span><span class="n">components</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="o">[</span><span class="n">feature</span><span class="o">]/</span><span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="n">Feature</span><span class="o">-</span><span class="k">specific</span><span class="w"> </span><span class="n">components</span>
+<span class="err">│</span><span class="w">       </span><span class="err">├──</span><span class="w"> </span><span class="n">PigCard</span><span class="p">.</span><span class="n">tsx</span><span class="w">   </span><span class="err">#</span><span class="w"> </span><span class="n">Pig</span><span class="w"> </span><span class="n">card</span><span class="w"> </span><span class="n">component</span>
+<span class="err">│</span><span class="w">       </span><span class="err">└──</span><span class="w"> </span><span class="p">...</span><span class="w">           </span><span class="err">#</span><span class="w"> </span><span class="n">Other</span><span class="w"> </span><span class="n">feature</span><span class="w"> </span><span class="n">components</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">hooks</span><span class="o">/</span><span class="w">                </span><span class="err">#</span><span class="w"> </span><span class="n">Custom</span><span class="w"> </span><span class="n">React</span><span class="w"> </span><span class="n">hooks</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">useAuth</span><span class="p">.</span><span class="n">ts</span><span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="n">Authentication</span><span class="w"> </span><span class="n">hook</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="p">...</span><span class="w">               </span><span class="err">#</span><span class="w"> </span><span class="n">Other</span><span class="w"> </span><span class="n">hooks</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">lib</span><span class="o">/</span><span class="w">                  </span><span class="err">#</span><span class="w"> </span><span class="n">Utility</span><span class="w"> </span><span class="n">functions</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">shared</span><span class="w"> </span><span class="n">code</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">axios</span><span class="p">.</span><span class="n">ts</span><span class="w">          </span><span class="err">#</span><span class="w"> </span><span class="n">API</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="n">configuration</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">utils</span><span class="p">.</span><span class="n">ts</span><span class="w">          </span><span class="err">#</span><span class="w"> </span><span class="k">General</span><span class="w"> </span><span class="n">utility</span><span class="w"> </span><span class="n">functions</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">types</span><span class="o">/</span><span class="w">                </span><span class="err">#</span><span class="w"> </span><span class="n">TypeScript</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="n">definitions</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">pig</span><span class="p">.</span><span class="n">ts</span><span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="n">Pig</span><span class="o">-</span><span class="n">related</span><span class="w"> </span><span class="n">types</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="p">...</span><span class="w">               </span><span class="err">#</span><span class="w"> </span><span class="n">Other</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="n">definitions</span>
+<span class="err">├──</span><span class="w"> </span><span class="k">public</span><span class="o">/</span><span class="w">               </span><span class="err">#</span><span class="w"> </span><span class="k">Static</span><span class="w"> </span><span class="n">assets</span>
+<span class="err">├──</span><span class="w"> </span><span class="p">.</span><span class="n">env</span><span class="p">.</span><span class="k">local</span><span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="n">Environment</span><span class="w"> </span><span class="n">variables</span><span class="w"> </span><span class="p">(</span><span class="ow">not</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="n">control</span><span class="p">)</span>
+<span class="err">├──</span><span class="w"> </span><span class="p">.</span><span class="n">env</span><span class="p">.</span><span class="n">example</span><span class="w">          </span><span class="err">#</span><span class="w"> </span><span class="n">Example</span><span class="w"> </span><span class="n">environment</span><span class="w"> </span><span class="n">variables</span>
+<span class="err">├──</span><span class="w"> </span><span class="k">next</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">mjs</span><span class="w">       </span><span class="err">#</span><span class="w"> </span><span class="k">Next</span><span class="p">.</span><span class="n">js</span><span class="w"> </span><span class="n">configuration</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">package</span><span class="p">.</span><span class="n">json</span><span class="w">          </span><span class="err">#</span><span class="w"> </span><span class="n">Node</span><span class="p">.</span><span class="n">js</span><span class="w"> </span><span class="n">dependencies</span>
+<span class="err">└──</span><span class="w"> </span><span class="n">README</span><span class="p">.</span><span class="n">md</span><span class="w">             </span><span class="err">#</span><span class="w"> </span><span class="n">Frontend</span><span class="w"> </span><span class="n">documentation</span>
+</code></pre></div>
+
+<h2 id="naming-conventions">Naming Conventions<a class="headerlink" href="#naming-conventions" title="Permanent link">&para;</a></h2>
+<h3 id="files-and-directories">Files and Directories<a class="headerlink" href="#files-and-directories" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Backend</strong>:</li>
+<li>Use PascalCase for model files: <code>Pig.js</code>, <code>Farm.js</code></li>
+<li>Use camelCase for route files: <code>pig.js</code>, <code>farm.js</code></li>
+<li>
+<p>Use camelCase for utility and service files: <code>activityLogger.js</code></p>
+</li>
+<li>
+<p><strong>Frontend</strong>:</p>
+</li>
+<li>Use PascalCase for component files: <code>Button.tsx</code>, <code>PigCard.tsx</code></li>
+<li>Use camelCase for utility and hook files: <code>useAuth.ts</code>, <code>axios.ts</code></li>
+<li>Use kebab-case for CSS module files: <code>button-styles.module.css</code></li>
+</ul>
+<h3 id="variables-and-functions">Variables and Functions<a class="headerlink" href="#variables-and-functions" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Use camelCase for variables and function names:
+  <code>javascript
+  const pigCount = 10;
+  function calculateTotal() { ... }</code></p>
+</li>
+<li>
+<p>Use PascalCase for React components and classes:
+  <code>javascript
+  function PigCard() { ... }
+  class PigModel { ... }</code></p>
+</li>
+<li>
+<p>Use UPPER_SNAKE_CASE for constants:
+  <code>javascript
+  const MAX_PIGS_PER_PAGE = 20;
+  const API_BASE_URL = 'http://localhost:8080/api';</code></p>
+</li>
+</ul>
+<h3 id="database">Database<a class="headerlink" href="#database" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use PascalCase for collection names: <code>Pigs</code>, <code>Farms</code></li>
+<li>Use camelCase for field names: <code>pigId</code>, <code>currentLocation</code></li>
+</ul>
+<h2 id="coding-style-guidelines">Coding Style Guidelines<a class="headerlink" href="#coding-style-guidelines" title="Permanent link">&para;</a></h2>
+<h3 id="javascripttypescript">JavaScript/TypeScript<a class="headerlink" href="#javascripttypescript" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use ES6+ features where appropriate</li>
+<li>Prefer <code>const</code> over <code>let</code> when variables are not reassigned</li>
+<li>Avoid using <code>var</code></li>
+<li>Use arrow functions for callbacks and anonymous functions</li>
+<li>Use async/await for asynchronous operations</li>
+<li>Use destructuring for object and array access</li>
+<li>Use template literals for string interpolation</li>
+<li>Use optional chaining and nullish coalescing operators</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Good</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pig</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">formattedName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`Pig: </span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">displayAge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="s1">&#39;Unknown&#39;</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pig</span><span class="o">?</span><span class="p">.</span><span class="nx">currentLocation</span><span class="o">?</span><span class="p">.</span><span class="nx">stallId</span><span class="o">?</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;Unknown Location&#39;</span><span class="p">;</span>
+
+<span class="c1">// Avoid</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pig</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pig</span><span class="p">.</span><span class="nx">age</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">formattedName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Pig: &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">name</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">displayAge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="kc">undefined</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Unknown&#39;</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pig</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">pig</span><span class="p">.</span><span class="nx">currentLocation</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">pig</span><span class="p">.</span><span class="nx">currentLocation</span><span class="p">.</span><span class="nx">stallId</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">pig</span><span class="p">.</span><span class="nx">currentLocation</span><span class="p">.</span><span class="nx">stallId</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">pig</span><span class="p">.</span><span class="nx">currentLocation</span><span class="p">.</span><span class="nx">stallId</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Unknown Location&#39;</span><span class="p">;</span>
+</code></pre></div>
+
+<h3 id="react">React<a class="headerlink" href="#react" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use functional components with hooks</li>
+<li>Use the React Context API for global state management</li>
+<li>Use React Query for server state management</li>
+<li>Break down complex components into smaller, reusable components</li>
+<li>Use prop destructuring in component parameters</li>
+<li>Use the <code>useCallback</code> hook for memoizing functions</li>
+<li>Use the <code>useMemo</code> hook for memoizing expensive calculations</li>
+<li>Use the <code>useEffect</code> hook for side effects</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Good</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">PigCard</span><span class="p">({</span><span class="w"> </span><span class="nx">pig</span><span class="p">,</span><span class="w"> </span><span class="nx">onEdit</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="p">,</span><span class="w"> </span><span class="nx">breed</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pig</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">handleEdit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useCallback</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">onEdit</span><span class="p">(</span><span class="nx">pig</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="p">[</span><span class="nx">onEdit</span><span class="p">,</span><span class="w"> </span><span class="nx">pig</span><span class="p">.</span><span class="nx">id</span><span class="p">]);</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="p">&lt;</span><span class="nt">Card</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">CardHeader</span><span class="p">&gt;{</span><span class="nx">name</span><span class="p">}&lt;/</span><span class="nt">CardHeader</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">CardBody</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="nx">Age</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">age</span><span class="p">}&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="nx">Breed</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">breed</span><span class="p">}&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">&lt;/</span><span class="nt">CardBody</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">&lt;</span><span class="nt">CardFooter</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="p">&lt;</span><span class="nt">Button</span><span class="w"> </span><span class="na">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">handleEdit</span><span class="p">}&gt;</span><span class="nx">Edit</span><span class="p">&lt;/</span><span class="nt">Button</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="p">&lt;/</span><span class="nt">CardFooter</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">Card</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="cssstyling">CSS/Styling<a class="headerlink" href="#cssstyling" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use Tailwind CSS for styling components</li>
+<li>Use CSS modules for component-specific styles</li>
+<li>Follow a mobile-first approach for responsive design</li>
+<li>Use CSS variables for theme colors and spacing</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Using Tailwind CSS</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">Button</span><span class="p">({</span><span class="w"> </span><span class="nx">children</span><span class="p">,</span><span class="w"> </span><span class="nx">variant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;primary&#39;</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">baseClasses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;px-4 py-2 rounded font-medium focus:outline-none&#39;</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">variantClasses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">primary</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;bg-blue-500 text-white hover:bg-blue-600&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">secondary</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;bg-gray-200 text-gray-800 hover:bg-gray-300&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">danger</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;bg-red-500 text-white hover:bg-red-600&#39;</span>
+<span class="w">  </span><span class="p">};</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="p">&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="sb">`</span><span class="si">${</span><span class="nx">baseClasses</span><span class="si">}</span><span class="sb"> </span><span class="si">${</span><span class="nx">variantClasses</span><span class="p">[</span><span class="nx">variant</span><span class="p">]</span><span class="si">}</span><span class="sb">`</span><span class="p">}&gt;</span>
+<span class="w">      </span><span class="p">{</span><span class="nx">children</span><span class="p">}</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="backend">Backend<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use async/await for asynchronous operations</li>
+<li>Use try/catch blocks for error handling</li>
+<li>Use middleware for cross-cutting concerns</li>
+<li>Use environment variables for configuration</li>
+<li>Use meaningful variable and function names</li>
+<li>Add comments for complex logic</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Good</span>
+<span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/:id&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Validate ID</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">isNaN</span><span class="p">(</span><span class="nx">id</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Invalid pig ID&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Find pig by ID</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">pig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">Pig</span><span class="p">.</span><span class="nx">findOne</span><span class="p">({</span><span class="w"> </span><span class="nx">pigId</span><span class="o">:</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="p">})</span>
+<span class="w">      </span><span class="p">.</span><span class="nx">populate</span><span class="p">(</span><span class="s1">&#39;currentLocation.farmId&#39;</span><span class="p">)</span>
+<span class="w">      </span><span class="p">.</span><span class="nx">populate</span><span class="p">(</span><span class="s1">&#39;currentLocation.barnId&#39;</span><span class="p">)</span>
+<span class="w">      </span><span class="p">.</span><span class="nx">populate</span><span class="p">(</span><span class="s1">&#39;currentLocation.stallId&#39;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Check if pig exists</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">pig</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">404</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Pig not found&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">pig</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error fetching pig:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">500</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Failed to fetch pig&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<h2 id="documentation-guidelines">Documentation Guidelines<a class="headerlink" href="#documentation-guidelines" title="Permanent link">&para;</a></h2>
+<h3 id="code-comments">Code Comments<a class="headerlink" href="#code-comments" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use JSDoc comments for functions and classes</li>
+<li>Add inline comments for complex logic</li>
+<li>Keep comments up-to-date with code changes</li>
+<li>Focus on why, not what (the code should be self-explanatory)</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="cm">/**</span>
+<span class="cm"> * Calculate health risk score for a pig</span>
+<span class="cm"> * @param {Object} pigData - Pig data including health metrics</span>
+<span class="cm"> * @returns {number} Risk score between 0 and 1</span>
+<span class="cm"> */</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">calculateHealthRisk</span><span class="p">(</span><span class="nx">pigData</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Initialize with base risk</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">riskScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// Factor 1: Recent posture data</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">pigData</span><span class="p">.</span><span class="nx">recentPosture</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Higher risk if pig is lying down too much</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">lyingPercentage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pigData</span><span class="p">.</span><span class="nx">recentPosture</span><span class="p">.</span><span class="nx">lying</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">lyingPercentage</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">70</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">riskScore</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">0.3</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">lyingPercentage</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">50</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">riskScore</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// Cap risk score at 1</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">min</span><span class="p">(</span><span class="nx">riskScore</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="readme-files">README Files<a class="headerlink" href="#readme-files" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Each major directory should have a README.md file</li>
+<li>READMEs should explain the purpose of the directory and its contents</li>
+<li>Include setup instructions, usage examples, and other relevant information</li>
+</ul>
+<h2 id="error-handling">Error Handling<a class="headerlink" href="#error-handling" title="Permanent link">&para;</a></h2>
+<h3 id="frontend">Frontend<a class="headerlink" href="#frontend" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use try/catch blocks for async operations</li>
+<li>Use error boundaries for React components</li>
+<li>Display user-friendly error messages</li>
+<li>Log errors to the console in development</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">fetchPigData</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">api</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="sb">`/pigs/</span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error fetching pig data:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Return user-friendly error message</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">404</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;Pig not found&#39;</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">401</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;You must be logged in to view this information&#39;</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;Failed to load pig data. Please try again later.&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="backend_1">Backend<a class="headerlink" href="#backend_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use try/catch blocks for async operations</li>
+<li>Return appropriate HTTP status codes</li>
+<li>Provide meaningful error messages</li>
+<li>Log errors with context information</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="nx">router</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">pigId</span><span class="p">,</span><span class="w"> </span><span class="nx">tag</span><span class="p">,</span><span class="w"> </span><span class="nx">breed</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="p">,</span><span class="w"> </span><span class="nx">currentLocation</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Validate input</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">pigId</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="nx">tag</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Pig ID and tag are required&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Create pig</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">newPig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">Pig</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">pigId</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">tag</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">breed</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">age</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">currentLocation</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">active</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">201</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">success</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">pig</span><span class="o">:</span><span class="w"> </span><span class="nx">newPig</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error creating pig:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Handle specific errors</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;ValidationError&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">code</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">11000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">409</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Pig with this ID or tag already exists&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">500</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Failed to create pig&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<h2 id="testing-conventions">Testing Conventions<a class="headerlink" href="#testing-conventions" title="Permanent link">&para;</a></h2>
+<h3 id="test-file-organization">Test File Organization<a class="headerlink" href="#test-file-organization" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Place test files adjacent to the files they test</li>
+<li>Use <code>.test.js</code> or <code>.spec.js</code> suffix for test files</li>
+<li>Group tests by feature or component</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>components/
+├── Button.tsx
+├── Button.test.tsx
+├── Card.tsx
+└── Card.test.tsx
+</code></pre></div>
+
+<h3 id="test-naming">Test Naming<a class="headerlink" href="#test-naming" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use descriptive test names that explain what is being tested</li>
+<li>Follow the pattern: <code>describe('Component/Function', () =&gt; { it('should do something', () =&gt; {}) })</code></li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;PigCard&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should render pig name and breed&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Test code</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should call onEdit when edit button is clicked&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Test code</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<h3 id="test-structure">Test Structure<a class="headerlink" href="#test-structure" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Follow the Arrange-Act-Assert pattern</li>
+<li>Use setup and teardown functions for common test setup</li>
+<li>Mock external dependencies</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;PigService&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Setup</span>
+<span class="w">  </span><span class="nx">beforeEach</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">jest</span><span class="p">.</span><span class="nx">clearAllMocks</span><span class="p">();</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;should fetch pig by ID&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Arrange</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">mockPig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">pigId</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Test Pig&#39;</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="nx">jest</span><span class="p">.</span><span class="nx">spyOn</span><span class="p">(</span><span class="nx">Pig</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;findOne&#39;</span><span class="p">).</span><span class="nx">mockResolvedValue</span><span class="p">(</span><span class="nx">mockPig</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Act</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">PigService</span><span class="p">.</span><span class="nx">getPigById</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Assert</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">Pig</span><span class="p">.</span><span class="nx">findOne</span><span class="p">).</span><span class="nx">toHaveBeenCalledWith</span><span class="p">({</span><span class="w"> </span><span class="nx">pigId</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">result</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">mockPig</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<h2 id="git-workflow">Git Workflow<a class="headerlink" href="#git-workflow" title="Permanent link">&para;</a></h2>
+<h3 id="branch-naming">Branch Naming<a class="headerlink" href="#branch-naming" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use feature branches for new features: <code>feature/add-pig-filter</code></li>
+<li>Use bugfix branches for bug fixes: <code>bugfix/fix-login-error</code></li>
+<li>Use hotfix branches for urgent fixes: <code>hotfix/critical-security-fix</code></li>
+</ul>
+<h3 id="commit-messages">Commit Messages<a class="headerlink" href="#commit-messages" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use present tense, imperative style: "Add feature" not "Added feature"</li>
+<li>Start with a capital letter</li>
+<li>Keep the first line under 50 characters</li>
+<li>Add more details in the commit body if needed</li>
+<li>Reference issue numbers when applicable</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="nv">Add</span><span class="w"> </span><span class="nv">pig</span><span class="w"> </span><span class="nv">filtering</span><span class="w"> </span><span class="nv">by</span><span class="w"> </span><span class="nv">health</span><span class="w"> </span><span class="nv">status</span>
+
+<span class="o">-</span><span class="w"> </span><span class="nv">Add</span><span class="w"> </span><span class="nv">filter</span><span class="w"> </span><span class="nv">component</span><span class="w"> </span><span class="nv">to</span><span class="w"> </span><span class="nv">pig</span><span class="w"> </span><span class="nv">list</span><span class="w"> </span><span class="nv">page</span>
+<span class="o">-</span><span class="w"> </span><span class="nv">Implement</span><span class="w"> </span><span class="nv">filter</span><span class="w"> </span><span class="nv">logic</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">API</span><span class="w"> </span><span class="nv">endpoint</span>
+<span class="o">-</span><span class="w"> </span><span class="nv">Update</span><span class="w"> </span><span class="nv">tests</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">new</span><span class="w"> </span><span class="nv">filtering</span><span class="w"> </span><span class="nv">functionality</span>
+
+<span class="nv">Fixes</span><span class="w"> </span><span class="sc">#123</span>
+</code></pre></div>
+
+<h3 id="pull-requests">Pull Requests<a class="headerlink" href="#pull-requests" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use descriptive titles</li>
+<li>Include a summary of changes</li>
+<li>Reference related issues</li>
+<li>Add screenshots for UI changes</li>
+<li>Ensure all tests pass before requesting review</li>
+</ul>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>Following these code structure and convention guidelines ensures consistency across the PAAL codebase and makes it easier for developers to understand, maintain, and extend the system. These conventions should be followed for all new code and applied to existing code during refactoring.</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    2025-05-08
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/brodynelly/PAAL-Docs" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>
