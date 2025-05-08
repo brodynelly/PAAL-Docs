@@ -2,7 +2,7 @@
 
 ## Overview
 
-This documentation provides a comprehensive guide to the PAAL (Pig Activity and Analytics Logger) system architecture, components, and implementation details. It is designed to help new team members understand the system's structure and functionality.
+This documentation provides a comprehensive guide to the PAAL system architecture, components, and implementation details. It is designed to help deepen the understanding of the system's structure and functionality.
 
 ## Table of Contents
 
@@ -50,7 +50,7 @@ This documentation provides a comprehensive guide to the PAAL (Pig Activity and 
 
 ## Quick Start
 
-For new team members, we recommend starting with the [High-Level System Architecture](./architecture/high-level-system.md) document to get a broad understanding of the system, followed by the Overall Architecture documents for both [Frontend](./frontend/overall-architecture.md) and [Backend](./backend/overall-architecture.md).
+I recommend starting with the [High-Level System Architecture](./architecture/high-level-system.md) document to get a broad understanding of the system, followed by the Overall Architecture documents for both [Frontend](./frontend/overall-architecture.md) and [Backend](./backend/overall-architecture.md).
 
 ## Contributing to Documentation
 

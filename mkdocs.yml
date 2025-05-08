@@ -1,11 +1,10 @@
 site_name: PAAL Documentation
 
-site_name: My Project Documentation
+site_name: PAAL (Documentation)
 site_url: https://brodynelly.github.io/PAAL-Docs/
 nav:
   - Home: index.md
   - Getting Started: gettingstarted.md
-  - Summary: summary.md
   - Frontend:
       - Overall Architecture: frontend/overall-architecture.md
       - Key Components and Structure: frontend/key-components.md
@@ -42,8 +41,8 @@ nav:
       - Configuration Management: internal/configuration-management.md
       - Dependency Management: internal/dependency-management.md
       - Build and Deployment Pipelines: internal/build-deployment.md
-      - Team Structure and Responsibilities: internal/team-structure.md
 theme:
   name: material
+
 plugins:
   - search
