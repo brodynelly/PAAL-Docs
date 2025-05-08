@@ -1,7 +1,6 @@
 site_name: PAAL Documentation
-
-site_name: PAAL (Documentation)
 site_url: https://brodynelly.github.io/PAAL-Docs/
+
 nav:
   - Home: index.md
   - Getting Started: gettingstarted.md
@@ -38,4 +37,17 @@ theme:
   name: material
 
 plugins:
-  - search
+  - search          # full-text search
+  - git-revision-date       # not the full package name
+  - awesome-pages
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/brodynelly/PAAL-Docs
+  copyright: |
+    © 2025 Brody Nelly. All rights reserved.
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
