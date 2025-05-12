@@ -88,5 +88,4 @@ To deploy the documentation site to GitHub Pages:
 - [MkDocs Material Theme](https://squidfunk.github.io/mkdocs-material/)
 - [GitHub Pages Deployment](https://www.mkdocs.org/user-guide/deploying-your-docs/)
 
----
 
